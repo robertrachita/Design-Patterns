@@ -17,8 +17,8 @@ namespace DesignPatterns_SocialMedia.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        
+        public IActionResult About()
         {
             return View();
         }
