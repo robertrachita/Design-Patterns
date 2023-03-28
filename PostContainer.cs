@@ -1,4 +1,6 @@
-﻿namespace DesignPatterns_SocialMedia
+﻿using DesignPatterns_SocialMedia.Models;
+
+namespace DesignPatterns_SocialMedia
 {
     public class PostContainer : IterableCollection
     {
