@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Create Post";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="CreatePost" asp-action="CreatePost" method="post">
+    @Html.TextBox("postTitle")
+    @Html.TextBox("postContent")
+    <button type="submit">Create</button>
+</form>
+
+<p>@ViewData["postTitle"]</p>
+<p>@ViewData["postContent"]</p>
