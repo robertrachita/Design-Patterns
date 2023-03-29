@@ -1,6 +1,4 @@
-﻿using DesignPatterns_SocialMedia.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace DesignPatterns_SocialMedia.Controllers
 {
@@ -15,6 +13,7 @@ namespace DesignPatterns_SocialMedia.Controllers
 
         public IActionResult Index()
         {
+            ViewData["postTitle"] = TempData["postTitle"];
             return View();
         }
         

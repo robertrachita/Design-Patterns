@@ -14,15 +14,19 @@ namespace DesignPatterns_SocialMedia.Controllers
         {
             try
             {
-                Console.WriteLine("trying");
                 ViewData["postTitle"] = Request.Form["postTitle"].First();
                 ViewData["postContent"] = Request.Form["postContent"].First();
 
-                return View();
+                string postTitle = Request.Form["postTitle"].First();
+                string postContent = Request.Form["postContent"].First();
+
+                TempData["postTitle"] = postTitle;
+                TempData["postContent"] = postContent;
+
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
-                Console.WriteLine("error");
                 return View();
             }
         }
