@@ -1,13 +1,25 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DesignPatterns_SocialMedia.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesignPatterns_SocialMedia.Controllers
 {
     public class PostsController : Controller
     {
-        // GET: PostsController
+        private readonly PostCreator textPostCreator = new TextPostCreator();
+        //create a post as variable
+        private Post post, post2;
+        //initialise the post
+
+        private Post CreateTextPost(string content, string title)
+        {
+            return textPostCreator.CreatePost(content, title);
+        }
+
         public ActionResult Index()
         {
+            post = CreateTextPost("This is the content", "This is the title");
+            post2 = CreateTextPost("This is the content2", "This is the title2");
             return View();
         }
 
@@ -38,46 +50,5 @@ namespace DesignPatterns_SocialMedia.Controllers
             }
         }
 
-        // GET: PostsController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: PostsController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: PostsController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: PostsController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
