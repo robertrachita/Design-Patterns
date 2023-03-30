@@ -2,9 +2,9 @@
 {
     public class ImagePost : Post
     {
-        protected override string Content { get; set; }
+        protected override String Content { get; set; }
 
-        public ImagePost(string content, string title) : base(content, title)
+        public ImagePost(int id, String content, string title) : base(id, content, title)
         {
             Content = content;
         }

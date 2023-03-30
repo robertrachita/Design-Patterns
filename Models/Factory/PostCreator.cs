@@ -5,6 +5,6 @@ namespace DesignPatterns_SocialMedia.Models.Factory
 {
     public abstract class PostCreator : Controller
     {
-        public abstract Post CreatePost(string content, string title);
+        public abstract Post CreatePost(int id, String content, String title);
     }
 }

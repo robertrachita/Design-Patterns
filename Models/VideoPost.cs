@@ -2,9 +2,9 @@
 {
     public class VideoPost : Post
     {
-        protected override string Content { get; set; }
+        protected override String Content { get; set; }
 
-        public VideoPost(string content, string title) : base(content, title)
+        public VideoPost(int id, String content, String title) : base(id, content, title)
         {
             Content = content;
         }

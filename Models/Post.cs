@@ -3,20 +3,45 @@
     public abstract class Post
     {
         protected int Id { get; set; }
-        protected string Title { get; set; }
+        protected String Title { get; set; }
         protected int Likes { get; set; }
-        protected List<string> Comments { get; set; }
-        protected abstract string Content { get; set; }
+        protected List<String> Comments { get; set; }
+        protected abstract String Content { get; set; }
         protected DateTime DateOfCreation { get; set; }
 
         public int GetId()
         {
             return Id;
         }
-
-        public Post(string content, string title)
+        public void SetId(int id)
         {
-            Id = new Random().Next(1, 1000000);
+            Id = id;
+        }
+        public String GetTitle()
+        {
+            return Title;
+        }
+        public void SetTitle(String title)
+        {
+            Title = title;
+        }
+        public int GetLikes()
+        {
+            return Likes;
+        }
+        public List<String> GetComments()
+        {
+            return Comments;
+        }
+        public DateTime GetDateOfCreation()
+        {
+            return DateOfCreation;
+        }
+        
+
+        public Post(int id, String content, String title)
+        {
+            Id = id;
             Title = title;
             Content = content;
             DateOfCreation = DateTime.Now;
@@ -29,7 +54,7 @@
             Comments.Add(comment);
         }
 
-        public void Like()
+        public void AddLike()
         {
             Likes++;
         }

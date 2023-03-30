@@ -3,9 +3,9 @@
 {
     public class TextPostCreator : PostCreator
     {
-        public override Post CreatePost(string content, string title)
+        public override Post CreatePost(int id, String content, String title)
         {
-            return new TextPost(content, title);
+            return new TextPost(id, content, title);
         }
     }
 

@@ -2,10 +2,10 @@
 {
     public class TextPost : Post
     {
-        protected override string Content { get; set; }
+        protected override String Content { get; set; }
         
 
-        public TextPost(string content, string title) : base(content, title)
+        public TextPost(int id, String content, String title) : base(id, content, title)
         {
             Content = content;
         }

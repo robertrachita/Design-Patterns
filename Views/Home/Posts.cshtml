@@ -10,7 +10,13 @@
 @foreach (Post post in Model)
 {
     <div class="post">
-        <h2>@post.GetId()</h2>
-        @*<p>@post.Content</p>*@
+        <p>Post number: @post.GetId()</p>
+        <h2>@post.GetTitle()</h2>
+        <p>@post.GetContent()</p>
+        <p>@post.GetDateOfCreation()</p>
+        <div class="actions">
+            <button onclick="likePost(@post.GetId()">Like (@post.GetLikes()</button>
+            <button onclick="showComments(@post.GetId())">Comments (@post.GetComments().Count)</button>
+        </div>
     </div>
 }
