@@ -2,16 +2,16 @@
 {
     public class ImagePost : Post
     {
-        protected override String Content { get; set; }
+        protected override string Content { get; set; }
 
-        public ImagePost(String content, String title) : base(content, title)
+        public ImagePost(string content, string title) : base(content, title)
         {
-            this.Content = content;
+            Content = content;
         }
 
-        public override String GetContent()
+        public override string GetContent()
         {
-            return this.Content;
+            return Content;
         }
     }
 }

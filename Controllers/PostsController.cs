@@ -1,4 +1,5 @@
 ﻿using DesignPatterns_SocialMedia.Models;
+using DesignPatterns_SocialMedia.Models.Factory;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
