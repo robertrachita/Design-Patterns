@@ -26,5 +26,11 @@ namespace DesignPatterns_SocialMedia.Controllers
         {
             return View();
         }
+
+        public IActionResult Posts()
+        {
+            return View();
+        }
+
     }
 }
