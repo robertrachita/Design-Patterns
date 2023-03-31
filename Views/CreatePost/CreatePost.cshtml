@@ -3,6 +3,13 @@
 }
 <h1>@ViewData["Title"]</h1>
 
+<script>
+    document.getElementById("CreateButton").addEventListener("click", function () {
+        alert("Creating post...");
+    });
+</script>
+
+
 <form asp-controller="CreatePost" asp-action="CreatePost" method="post">
     @Html.TextBox("postTitle")
     @Html.TextBox("postContent")

@@ -14,6 +14,8 @@ namespace DesignPatterns_SocialMedia.Controllers
         private string? postTitle;
         private string? postContent;
         private string? postType;
+        Button createButton = new CreateButton();
+        
         
         public IActionResult CreatePost()
         {
@@ -77,7 +79,6 @@ namespace DesignPatterns_SocialMedia.Controllers
         {
             return videoPostCreator.CreatePost(id, content, title);
         }
-
 
     }
 }
