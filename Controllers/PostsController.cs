@@ -13,6 +13,7 @@ namespace DesignPatterns_SocialMedia.Controllers
         private readonly PostCreator videoPostCreator = new VideoPostCreator();
         private Post post, post2, post3, post4;
         private List<Post> posts;
+        private int id = 0;
 
         public PostsController(ILogger<HomeController> logger)
         {
@@ -27,9 +28,10 @@ namespace DesignPatterns_SocialMedia.Controllers
             posts.Add(post3);
             posts.Add(post4);
         }
-        private Post CreateTextPost(int id,String content, String title)
+        private Post CreateTextPost(int id, String content, String title)
         {
             return textPostCreator.CreatePost(id, content, title);
+        
         }
 
         private Post CreateImagePost(int id, String content, String title)
