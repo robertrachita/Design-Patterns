@@ -1,8 +1,12 @@
-﻿namespace DesignPatterns_SocialMedia
+﻿using DesignPatterns_SocialMedia.Models;
+
+namespace DesignPatterns_SocialMedia
 {
     public interface Iterator
     {
         public Boolean hasNext();
-        public Object next();
+
+        public Boolean isLast();
+        public Post next();
     }
 }

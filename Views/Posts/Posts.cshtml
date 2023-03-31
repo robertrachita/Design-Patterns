@@ -8,9 +8,18 @@
 
 @model List<Post>
 
-@foreach (Post post in Model)
-{
-    <div class="post">
+@{
+    PostContainer postContainer = new PostContainer(Model);
+
+    Iterator postIterator = postContainer.createIterator();
+
+    Post post;
+
+    while (postIterator.hasNext())
+    {
+         post = postIterator.next();
+
+        <div class="post">
         <p>Post number: @post.GetId()</p>
         <h2>@post.GetTitle()</h2>
         @if (post is ImagePost imagePost)
@@ -35,5 +44,9 @@
             <button onclick="showComments(@post.GetId())">Comments (@post.GetComments().Count)</button>
             @Html.ActionLink("Edit this post", "ViewPost", new {id = post.GetId()})
         </div>
-    </div>
+        </div>
+    }
 }
+
+
+    
