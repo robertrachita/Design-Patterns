@@ -8,19 +8,33 @@
 
 <h4>Post</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="View">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+
+
+@foreach (String el in @Model.GetComments())
+{
+    <div class="comment-box">
+        <p> @el.ToString() </p>
     </div>
-</div>
+}
+
+
+<form asp-action="ViewPost" asp-controller="Posts" method="post" >
+    <input type="hidden" value="@Model.GetId()" />
+    <input type="hidden" value="@Model.GetId()"><img src="~/Image/Like.png" width="30" height="30">
+    <img src="~/Image/Superlike.png" width="30" height="30">
+    <img src="~/Image/Dislike.png" width="30" height="30"> 
+    <button type="submit">Submit</button>
+</form>
+
 <p> @Model.GetId() </p>
+<p>@Model.GetLikes() </p>
+
 
 <div>
     <a asp-action="Posts">Back to Home</a>
 </div>
+<br />
+<br />
+
+
 

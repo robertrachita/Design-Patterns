@@ -19,12 +19,24 @@ namespace DesignPatterns_SocialMedia.Controllers
         {
             return View(CreatedPosts.GetPosts());
         }
-        
+
         [HttpGet]
-        public IActionResult ViewPost(int id)
+        public ActionResult ViewPost(int id)
         {
             Post post = getPostById(id);
             return View(post);
+        }
+
+        [HttpPost]
+        public ActionResult ViewPost(int id, int value)
+        {
+            Post post = getPostById(id);
+            LikeDecorator like = new LikeDecorator();
+            post.AddLike(like);
+            post.AddComment(value.ToString());
+
+
+            return RedirectToAction("Posts", "Posts");
         }
 
         private Post getPostById(int id)
