@@ -1,6 +1,4 @@
-﻿using DesignPatterns_SocialMedia.Models.Factory;
-using DesignPatterns_SocialMedia.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace DesignPatterns_SocialMedia.Controllers
 {
@@ -18,20 +16,19 @@ namespace DesignPatterns_SocialMedia.Controllers
             {
                 ViewData["postTitle"] = Request.Form["postTitle"].First();
                 ViewData["postContent"] = Request.Form["postContent"].First();
-                ViewData["postType"] = Request.Form["postType"].First();
 
-                TempData["postTitle"] = Request.Form["postTitle"].First();
-                TempData["postContent"] = Request.Form["postContent"].First();
-                TempData["postType"] = Request.Form["postType"].First();
+                string postTitle = Request.Form["postTitle"].First();
+                string postContent = Request.Form["postContent"].First();
 
+                TempData["postTitle"] = postTitle;
+                TempData["postContent"] = postContent;
 
-                return RedirectToAction("Posts", "Posts");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
                 return View();
             }
         }
-
     }
 }
