@@ -31,5 +31,28 @@ namespace DesignPatterns_SocialMedia.Controllers
             return View(posts);
         }
 
+        public IActionResult ViewPost() 
+        {
+            Post post = getPostById(1);
+            return View(post);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            ViewPost();
+        }
+
+        private Post getPostById(int id)
+        {
+            foreach (var el in posts)
+            {
+                if (el.GetId() == id)
+                {
+                    return el;
+                }
+            }
+            return null;
+        }
+
     }
 }

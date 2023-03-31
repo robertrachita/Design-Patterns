@@ -7,4 +7,12 @@
     <UserSecretsId>395c8066-8183-48d5-ad0e-f28a62b33dd8</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Decorator\" />
+  </ItemGroup>
+
 </Project>

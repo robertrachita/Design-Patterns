@@ -4,6 +4,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>posts go here</p>
+<script type="text/javascript" src="~/js/jquery.js"></script>
 
 @model List<Post>
 
@@ -15,8 +16,16 @@
         <p>@post.GetContent()</p>
         <p>@post.GetDateOfCreation()</p>
         <div class="actions">
-            <button onclick="likePost(@post.GetId()">Like (@post.GetLikes()</button>
+            <button onclick="likePost(@post.GetId())">Like (@post.GetLikes())</button>
             <button onclick="showComments(@post.GetId())">Comments (@post.GetComments().Count)</button>
+            @Html.ActionLink("Edit this post", "ViewPost", new {id = post.GetId()});
         </div>
     </div>
 }
+@*<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+            window.location.href = '@Url.Action("ViewPost", "Posts")';
+        });
+    });
+</script>*@

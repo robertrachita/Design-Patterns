@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "ViewPost";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+@model List<Post>
+
+<p>Hi</p>
+
+@foreach (var el in Model)
+{
+    <p>@el.GetId()</p>
+}
+
