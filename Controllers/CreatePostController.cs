@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DesignPatterns_SocialMedia.Controllers
 {
-    public class CreatePostController : Controller
+    public class CreatePostController : Controller, Subscriber
     {
         private readonly PostCreator textPostCreator = new TextPostCreator();
         private readonly PostCreator imagePostCreator = new ImagePostCreator();
@@ -14,6 +14,7 @@ namespace DesignPatterns_SocialMedia.Controllers
         private string? postTitle;
         private string? postContent;
         private string? postType;
+
         Button createButton = new CreateButton();
         
         
@@ -27,6 +28,8 @@ namespace DesignPatterns_SocialMedia.Controllers
         {
             try
             {
+                createButton.AddSubscriber(this);
+
                 ViewData["postTitle"] = Request.Form["postTitle"].First();
                 ViewData["postContent"] = Request.Form["postContent"].First();
                 ViewData["postType"] = Request.Form["postType"].First();
@@ -56,6 +59,8 @@ namespace DesignPatterns_SocialMedia.Controllers
                         return RedirectToAction("Index", "Home");
                         break;
                 }
+
+                createButton.NotifySubscribers();
                 return RedirectToAction("Posts", "Posts");
             }
             catch
@@ -80,5 +85,9 @@ namespace DesignPatterns_SocialMedia.Controllers
             return videoPostCreator.CreatePost(id, content, title);
         }
 
+        public void Update()
+        {
+            JavaScriptHandler.javaScriptAlert = "ALERT!: Post created successfully!";
+        }
     }
 }
