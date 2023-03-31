@@ -4,7 +4,7 @@
     {
         private static List<Post> posts = new List<Post>();
         private static int id = 5;
-        
+
         static CreatedPosts()
         {
             posts.Add(CreateTextPost(1, "This is the content", "This is the title"));
@@ -13,6 +13,17 @@
             posts.Add(CreateVideoPost(4, "https://vimeo.com/810735707", "Video Post"));
         }
 
+        public static Post GetPostByID(int id)
+        {
+            foreach (Post post in posts)
+            {
+                if (post.GetId() == id)
+                {
+                    return post;
+                }
+            }
+            return null;
+        }
         public static void IncreaseID()
         {
             id++;
