@@ -7,10 +7,10 @@
 
         static CreatedPosts()
         {
-            posts.Add(CreateTextPost(1, "This is the content", "This is the title"));
-            posts.Add(CreateTextPost(2, "This is the content again", "Text Post"));
-            posts.Add(CreateImagePost(3, "https://i.redd.it/5gnz9r0fcaqa1.jpg", "Image Post"));
-            posts.Add(CreateVideoPost(4, "https://vimeo.com/810735707", "Video Post"));
+            posts.Add(CreateTextPost(0, "This is the content", "This is the title"));
+            posts.Add(CreateTextPost(1, "This is the content again", "Text Post"));
+            posts.Add(CreateImagePost(2, "https://i.redd.it/5gnz9r0fcaqa1.jpg", "Image Post"));
+            posts.Add(CreateVideoPost(3, "https://vimeo.com/810735707", "Video Post"));
         }
 
         public static Post GetPostByID(int id)

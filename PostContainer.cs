@@ -6,6 +6,10 @@ namespace DesignPatterns_SocialMedia
     {
         private List<Post> posts { get; set; }
 
+        public PostContainer(List<Post> listOfPosts) {
+            posts = listOfPosts;
+        }
+
         public Iterator createIterator()
         {
             if (posts == null) return null;
@@ -35,8 +39,14 @@ namespace DesignPatterns_SocialMedia
                 return position < copyOfPosts.Count;       
             }
 
-            public Object next()
+            public Boolean isLast()
             {
+                return position == copyOfPosts.Count;
+            }
+
+            public Post next()
+            {
+                if (this.isLast()) return copyOfPosts[position];
                 if (this.hasNext()) return copyOfPosts[position++];
 
                 return null;
