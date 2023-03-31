@@ -4,7 +4,7 @@
     {
         protected int Id { get; set; }
         protected String Title { get; set; }
-        protected int Likes { get; set; }
+        protected List<LikeDecorator> Likes { get; set; }
         protected List<String> Comments { get; set; }
         protected abstract String Content { get; set; }
         protected DateTime DateOfCreation { get; set; }
@@ -27,7 +27,12 @@
         }
         public int GetLikes()
         {
-            return Likes;
+            int likes = 0;
+            foreach(LikeDecorator like in Likes)
+            {
+                likes += like.getLike();
+            }    
+            return likes;
         }
         public List<String> GetComments()
         {
@@ -45,7 +50,7 @@
             Title = title;
             Content = content;
             DateOfCreation = DateTime.Now;
-            Likes = 0;
+            Likes = new List<LikeDecorator>();
             Comments = new List<string>();
         }
 
@@ -54,9 +59,9 @@
             Comments.Add(comment);
         }
 
-        public void AddLike()
+        public void AddLike(LikeDecorator likeDecorator)
         {
-            Likes++;
+            Likes.Add(likeDecorator);
         }
 
         public abstract string GetContent();

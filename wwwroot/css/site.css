@@ -17,6 +17,14 @@ body {
     margin-bottom: 60px;
 }
 
+
+.comment-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
 .post {
     border: 1px solid #ccc;
     margin-bottom: 10px;
