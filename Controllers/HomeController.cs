@@ -1,6 +1,4 @@
-﻿using DesignPatterns_SocialMedia.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace DesignPatterns_SocialMedia.Controllers
 {
@@ -15,18 +13,24 @@ namespace DesignPatterns_SocialMedia.Controllers
 
         public IActionResult Index()
         {
+            ViewData["postTitle"] = TempData["postTitle"];
             return View();
         }
-
-        public IActionResult Privacy()
+        
+        public IActionResult About()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult CreatePost()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
+
+        public IActionResult Posts()
+        {
+            return View();
+        }
+
     }
 }

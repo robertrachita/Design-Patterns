@@ -1,0 +1,40 @@
+﻿@model DesignPatterns_SocialMedia.Models.Post
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<h4>Post</h4>
+<hr />
+
+
+@foreach (String el in @Model.GetComments())
+{
+    <div class="comment-box">
+        <p> @el.ToString() </p>
+    </div>
+}
+
+
+<form asp-action="ViewPost" asp-controller="Posts" method="post" >
+    <input type="hidden" value="@Model.GetId()" />
+     <img src="~/Image/Like.png" width="30" height="30">
+    <img src="~/Image/Superlike.png" width="30" height="30">
+    <img src="~/Image/Dislike.png" width="30" height="30"> 
+    <button type="submit">Submit</button>
+</form>
+
+<p> @Model.GetId() </p>
+<p>@Model.GetLikes() </p>
+
+
+<div>
+    <a asp-action="Posts">Back to Home</a>
+</div>
+<br />
+<br />
+
+
+
