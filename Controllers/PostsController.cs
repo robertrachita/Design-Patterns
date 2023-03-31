@@ -6,9 +6,11 @@ using Microsoft.Extensions.Hosting;
 
 namespace DesignPatterns_SocialMedia.Controllers
 {
-    public class PostsController : Controller
+    public class PostsController : Controller, Subscriber
     {
         private readonly ILogger<HomeController> _logger;
+
+        private EditButton editButton = new EditButton();
 
         public PostsController(ILogger<HomeController> logger)
         {
@@ -30,11 +32,14 @@ namespace DesignPatterns_SocialMedia.Controllers
         [HttpPost]
         public ActionResult ViewPost(int id, int value)
         {
+            editButton.AddSubscriber(this);
+
             Post post = getPostById(id);
             LikeDecorator like = new LikeDecorator();
             post.AddLike(like);
             post.AddComment(value.ToString());
 
+            editButton.NotifySubscribers();
 
             return RedirectToAction("Posts", "Posts");
         }
@@ -49,6 +54,11 @@ namespace DesignPatterns_SocialMedia.Controllers
                 }
             }
             return null;
+        }
+
+        public void Update()
+        {
+            JavaScriptHandler.javaScriptAlert = "ALERT: Post edited successfuly!";
         }
     }
 }
