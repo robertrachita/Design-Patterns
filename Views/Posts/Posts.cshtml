@@ -1,39 +1,56 @@
 ﻿@{
     ViewData["Title"] = "View Posts";
 }
-<script type="text/javascript" src="~/js/jquery.js"></script>
 <h1>@ViewData["Title"]</h1>
+<h1>@JavaScriptHandler.javaScriptAlert</h1>
+
+<script type="text/javascript">
+    @JavaScriptHandler.javaScriptAlert;
+</script>
 
 <p>posts go here</p>
 
 @model List<Post>
 
-@foreach (Post post in Model)
-{
+@{
+    PostContainer postContainer = new PostContainer(Model);
+
+    Iterator postIterator = postContainer.createIterator();
+
+    Post post;
+
+    while (postIterator.hasNext())
+    {
+         post = postIterator.next();
+
     <div class="post">
-        <p>Post number: @post.GetId()</p>
-        <h2>@post.GetTitle()</h2>
-        @if (post is ImagePost imagePost)
+            <p>Post number: @post.GetId()</p>
+            <h2>@post.GetTitle()</h2>
+            @if (post is ImagePost imagePost)
         {
-            <img src="@imagePost.GetContent()" alt="image post" />
+                <img src="@imagePost.GetContent()" alt="image post" />
         }
         else if (post is TextPost textPost)
         {
-            <p>@post.GetContent()</p>
+                <p>@post.GetContent()</p>
         }
         else if (post is VideoPost videoPost)
         {
-            <iframe width="560" height="315" src="@videoPost.GetContent()" frameborder="0" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="@videoPost.GetContent()" frameborder="0" allowfullscreen></iframe>
         }
         else
         {
-            <p>Incorrect type post or source.</p>
+                <p>Incorrect type post or source.</p>
         }
-        <p>@post.GetDateOfCreation()</p>
-        <div class="actions">
-            <button onclick="likePost(@post.GetId()">Like (@post.GetLikes())</button>
-            <button onclick="showComments(@post.GetId())">Comments (@post.GetComments().Count)</button>
-            @Html.ActionLink("Edit this post", "ViewPost", new {id = post.GetId()})
-        </div>
+            <p>@post.GetDateOfCreation()</p>
+            <div class="actions">
+                <button onclick="likePost(@post.GetId()">Like (@post.GetLikes())</button>
+                <button onclick="showComments(@post.GetId())">Comments (@post.GetComments().Count)</button>
+                @Html.ActionLink("Edit this post", "ViewPost", new {id = post.GetId()})
+            </div>
     </div>
+    }
 }
+
+
+    
