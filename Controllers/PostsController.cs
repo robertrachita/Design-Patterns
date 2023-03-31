@@ -50,7 +50,9 @@ namespace DesignPatterns_SocialMedia.Controllers
                 default:
                     break;
             }
-            
+
+            editButton.NotifySubscribers();
+
             post.AddLike(like); 
 
             return RedirectToAction("Posts", "Posts");

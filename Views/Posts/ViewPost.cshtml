@@ -21,7 +21,7 @@
 
 <form asp-action="ViewPost" asp-controller="Posts" method="post" >
     <input type="hidden" value="@Model.GetId()" />
-    @Html.RadioButton("selectLike", 1) <img src="~/Image/Like.png" width="30" height="30">
+    @Html.RadioButton("selectLike", 1, true) <img src="~/Image/Like.png" width="30" height="30">
     @Html.RadioButton("selectLike", 2) <img src="~/Image/Superlike.png" width="30" height="30">
     @Html.RadioButton("selectLike", 3) <img src="~/Image/Dislike.png" width="30" height="30">
     <button type="submit">Submit</button>
