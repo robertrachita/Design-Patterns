@@ -12,10 +12,25 @@
     <div class="post">
         <p>Post number: @post.GetId()</p>
         <h2>@post.GetTitle()</h2>
-        <p>@post.GetContent()</p>
+        @if (post is ImagePost imagePost)
+        {
+            <img src="@imagePost.GetContent()" alt="image post" />
+        }
+        else if (post is TextPost textPost)
+        {
+            <p>@post.GetContent()</p>
+        }
+        else if (post is VideoPost videoPost)
+        {
+            <iframe width="560" height="315" src="@videoPost.GetContent()" frameborder="0" allowfullscreen></iframe>
+        }
+        else
+        {
+            <p>Incorrect type post or source.</p>
+        }
         <p>@post.GetDateOfCreation()</p>
         <div class="actions">
-            <button onclick="likePost(@post.GetId()">Like (@post.GetLikes()</button>
+            <button onclick="likePost(@post.GetId()">Like (@post.GetLikes())</button>
             <button onclick="showComments(@post.GetId())">Comments (@post.GetComments().Count)</button>
         </div>
     </div>
