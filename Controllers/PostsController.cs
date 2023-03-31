@@ -11,19 +11,24 @@ namespace DesignPatterns_SocialMedia.Controllers
         private readonly PostCreator textPostCreator = new TextPostCreator();
         private readonly PostCreator imagePostCreator = new ImagePostCreator();
         private readonly PostCreator videoPostCreator = new VideoPostCreator();
-        private Post post, post2, post3, post4;
+        private Post post, post1, post2, post3, post4;
         private List<Post> posts;
-        private int id = 0;
+        private int id = 5;
+
+
+        string? postTitle;
+        string? postContent;
+        string? postType;
 
         public PostsController(ILogger<HomeController> logger)
         {
             _logger = logger;
             posts = new List<Post>();
-            post = CreateTextPost(1, "This is the content", "This is the title");
+            post1 = CreateTextPost(1, "This is the content", "This is the title");
             post2 = CreateTextPost(2, "This is the content again", "Text Post");
             post3 = CreateImagePost(3, "https://i.redd.it/5gnz9r0fcaqa1.jpg", "Image Post");
             post4 = CreateVideoPost(4, "https://vimeo.com/810735707", "Video Post");
-            posts.Add(post);
+            posts.Add(post1);
             posts.Add(post2);
             posts.Add(post3);
             posts.Add(post4);
@@ -46,6 +51,29 @@ namespace DesignPatterns_SocialMedia.Controllers
 
         public IActionResult Posts()
         {
+            postType = TempData["postType"] as String;
+            postTitle = TempData["postTitle"] as String;
+            postContent = TempData["postContent"] as String;
+
+            switch (postType)
+            {
+                case "Text":
+                    post = CreateTextPost(id, postContent, postTitle);
+                    id++;
+                    break;
+                case "Image":
+                    post = CreateImagePost(id, postContent, postTitle);
+                    id++;
+                    break;
+                case "Video":
+                    post = CreateVideoPost(id, postContent, postTitle);
+                    id++;
+                    break;
+                default:
+                    break;
+            }
+            posts.Add(post);
+            
             return View(posts);
         }
 
