@@ -18,7 +18,7 @@
         <div class="actions">
             <button onclick="likePost(@post.GetId())">Like (@post.GetLikes())</button>
             <button onclick="showComments(@post.GetId())">Comments (@post.GetComments().Count)</button>
-            @Html.ActionLink("Edit this post", "ViewPost", new {id = post.GetId()});
+            @Html.ActionLink("Edit this post", "ViewPost", new {id = post.GetId()})
         </div>
     </div>
 }

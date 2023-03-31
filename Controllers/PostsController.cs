@@ -31,15 +31,11 @@ namespace DesignPatterns_SocialMedia.Controllers
             return View(posts);
         }
 
-        public IActionResult ViewPost() 
+        [HttpGet]
+        public IActionResult ViewPost(int id) 
         {
-            Post post = getPostById(1);
+            Post post = getPostById(id);
             return View(post);
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            ViewPost();
         }
 
         private Post getPostById(int id)
