@@ -28,13 +28,26 @@ namespace DesignPatterns_SocialMedia.Controllers
         }
 
         [HttpPost]
-        public ActionResult ViewPost(int id, int value)
+        public ActionResult ViewPost(int id, int content)
         {
             Post post = getPostById(id);
-            LikeDecorator like = new LikeDecorator();
-            post.AddLike(like);
-            post.AddComment(value.ToString());
 
+            var value = Request.Form["selectLike"].First() as String;
+            LikeDecorator like = new LikeDecorator();
+
+            switch(value)
+            {
+                case "2":
+                    like = new SuperLikeDecorator();
+                    break;
+                case "3":
+                    like = new DislikeDecorator();
+                    break;
+                default:
+                    break;
+            }
+            
+            post.AddLike(like);
 
             return RedirectToAction("Posts", "Posts");
         }
