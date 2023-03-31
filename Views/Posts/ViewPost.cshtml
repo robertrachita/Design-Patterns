@@ -4,6 +4,7 @@
     ViewData["Title"] = "View";
 }
 
+
 <h1>View</h1>
 
 <h4>Post</h4>
@@ -26,8 +27,13 @@
     <button type="submit">Submit</button>
 </form>
 
-<p> @Model.GetId() </p>
-<p>@Model.GetLikes() </p>
+<form asp-action="addComment" asp-controller="Posts" method="post">
+    @Html.Hidden("PostId", Model.GetId())
+    <div class="comment-box comment-content">
+        @Html.TextBox("postComment")
+    </div>
+    <button type="submit">Post comment</button>
+</form>
 
 
 <div>

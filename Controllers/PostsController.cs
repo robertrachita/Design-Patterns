@@ -47,7 +47,19 @@ namespace DesignPatterns_SocialMedia.Controllers
                     break;
             }
             
-            post.AddLike(like);
+            post.AddLike(like); 
+
+            return RedirectToAction("Posts", "Posts");
+        }
+
+        [HttpPost]
+        public ActionResult addComment()
+        {
+            var ID = Request.Form["PostId"].First() as String;
+            var id = int.Parse(ID);
+            Post post = getPostById(id);
+            string comment = Request.Form["postComment"].First() as String;
+            post.AddComment(comment);
 
             return RedirectToAction("Posts", "Posts");
         }
